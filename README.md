@@ -5,7 +5,10 @@
 ## Seven Peaks Software Dec. 8th 2021 
 
 ### Getting started
-`maven clean compile` 
+- Type: `maven clean compile` to compile the project 
+- Have MongoDb running locally with a user: test/test and db: test
+- Run the API locally by going to ./api directory and typing `mvn spring-boot:run`
+- API available at: http://localhost:8080/api
 
 ### Reference Documentation
 For further reference, please consider the following sections:
