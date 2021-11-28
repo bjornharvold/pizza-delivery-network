@@ -1,0 +1,520 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "OpenAPI definition",
+		"version": "v0"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:8080",
+			"description": "Generated server url"
+		}
+	],
+	"paths": {
+		"/api/pizzas": {
+			"get": {
+				"tags": [
+					"pizza-entity-controller"
+				],
+				"description": "get-pizza",
+				"operationId": "getCollectionResource-pizza-get_1",
+				"parameters": [
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Zero-based page index (0..N)",
+						"required": false,
+						"schema": {
+							"minimum": 0,
+							"type": "integer",
+							"default": 0
+						}
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"description": "The size of the page to be returned",
+						"required": false,
+						"schema": {
+							"minimum": 1,
+							"type": "integer",
+							"default": 20
+						}
+					},
+					{
+						"name": "sort",
+						"in": "query",
+						"description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+						"required": false,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/hal+json": {
+								"schema": {
+									"$ref": "#/components/schemas/PagedModelEntityModelPizza"
+								}
+							},
+							"application/x-spring-data-compact+json": {
+								"schema": {
+									"$ref": "#/components/schemas/PagedModelEntityModelPizza"
+								}
+							},
+							"text/uri-list": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"pizza-entity-controller"
+				],
+				"description": "create-pizza",
+				"operationId": "postCollectionResource-pizza-post",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PizzaRequestBody"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/hal+json": {
+								"schema": {
+									"$ref": "#/components/schemas/EntityModelPizza"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/pizzas/{id}": {
+			"get": {
+				"tags": [
+					"pizza-entity-controller"
+				],
+				"description": "get-pizza",
+				"operationId": "getItemResource-pizza-get",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/hal+json": {
+								"schema": {
+									"$ref": "#/components/schemas/EntityModelPizza"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"pizza-entity-controller"
+				],
+				"description": "update-pizza",
+				"operationId": "putItemResource-pizza-put",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PizzaRequestBody"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/hal+json": {
+								"schema": {
+									"$ref": "#/components/schemas/EntityModelPizza"
+								}
+							}
+						}
+					},
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/hal+json": {
+								"schema": {
+									"$ref": "#/components/schemas/EntityModelPizza"
+								}
+							}
+						}
+					},
+					"204": {
+						"description": "No Content"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"pizza-entity-controller"
+				],
+				"description": "delete-pizza",
+				"operationId": "deleteItemResource-pizza-delete",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"204": {
+						"description": "No Content"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"patch": {
+				"tags": [
+					"pizza-entity-controller"
+				],
+				"description": "patch-pizza",
+				"operationId": "patchItemResource-pizza-patch",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PizzaRequestBody"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/hal+json": {
+								"schema": {
+									"$ref": "#/components/schemas/EntityModelPizza"
+								}
+							}
+						}
+					},
+					"204": {
+						"description": "No Content"
+					}
+				}
+			}
+		},
+		"/api/profile": {
+			"get": {
+				"tags": [
+					"profile-controller"
+				],
+				"operationId": "listAllFormsOfMetadata_1",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/hal+json": {
+								"schema": {
+									"$ref": "#/components/schemas/RepresentationModelObject"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/profile/pizzas": {
+			"get": {
+				"tags": [
+					"profile-controller"
+				],
+				"operationId": "descriptor_1_1_1",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "string"
+								}
+							},
+							"application/alps+json": {
+								"schema": {
+									"type": "string"
+								}
+							},
+							"application/schema+json": {
+								"schema": {
+									"$ref": "#/components/schemas/JsonSchema"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"AbstractJsonSchemaPropertyObject": {
+				"type": "object",
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"readOnly": {
+						"type": "boolean"
+					}
+				}
+			},
+			"Item": {
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"properties": {
+						"type": "object",
+						"additionalProperties": {
+							"$ref": "#/components/schemas/AbstractJsonSchemaPropertyObject"
+						}
+					},
+					"requiredProperties": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"JsonSchema": {
+				"type": "object",
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"properties": {
+						"type": "object",
+						"additionalProperties": {
+							"$ref": "#/components/schemas/AbstractJsonSchemaPropertyObject"
+						}
+					},
+					"requiredProperties": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"definitions": {
+						"type": "object",
+						"additionalProperties": {
+							"$ref": "#/components/schemas/Item"
+						}
+					},
+					"type": {
+						"type": "string"
+					},
+					"$schema": {
+						"type": "string"
+					}
+				}
+			},
+			"Links": {
+				"type": "object",
+				"additionalProperties": {
+					"$ref": "#/components/schemas/Link"
+				}
+			},
+			"RepresentationModelObject": {
+				"type": "object",
+				"properties": {
+					"_links": {
+						"$ref": "#/components/schemas/Links"
+					}
+				}
+			},
+			"EntityModelPizza": {
+				"required": [
+					"id",
+					"name",
+					"price"
+				],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "Name of pizza",
+						"example": "Pizza Napoli"
+					},
+					"price": {
+						"minimum": 0,
+						"type": "integer",
+						"description": "Price of pizza",
+						"format": "int32"
+					},
+					"_links": {
+						"$ref": "#/components/schemas/Links"
+					}
+				}
+			},
+			"PageMetadata": {
+				"type": "object",
+				"properties": {
+					"size": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"totalElements": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"totalPages": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"number": {
+						"type": "integer",
+						"format": "int64"
+					}
+				}
+			},
+			"PagedModelEntityModelPizza": {
+				"type": "object",
+				"properties": {
+					"_embedded": {
+						"type": "object",
+						"properties": {
+							"pizzas": {
+								"type": "array",
+								"items": {
+									"$ref": "#/components/schemas/EntityModelPizza"
+								}
+							}
+						}
+					},
+					"_links": {
+						"$ref": "#/components/schemas/Links"
+					},
+					"page": {
+						"$ref": "#/components/schemas/PageMetadata"
+					}
+				}
+			},
+			"PizzaRequestBody": {
+				"required": [
+					"id",
+					"name",
+					"price"
+				],
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "Unique identifier",
+						"example": "pizza-1"
+					},
+					"name": {
+						"type": "string",
+						"description": "Name of pizza",
+						"example": "Pizza Napoli"
+					},
+					"price": {
+						"minimum": 0,
+						"type": "integer",
+						"description": "Price of pizza",
+						"format": "int32"
+					}
+				}
+			},
+			"Link": {
+				"type": "object",
+				"properties": {
+					"href": {
+						"type": "string"
+					},
+					"hreflang": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"deprecation": {
+						"type": "string"
+					},
+					"profile": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"templated": {
+						"type": "boolean"
+					}
+				}
+			}
+		}
+	}
+}
