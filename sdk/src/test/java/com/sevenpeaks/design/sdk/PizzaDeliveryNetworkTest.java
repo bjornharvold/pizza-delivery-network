@@ -35,7 +35,7 @@ public class PizzaDeliveryNetworkTest {
     public void givenNetwork_whenLoad_thenVerify() {
         final PizzaEntityControllerApi api = new PizzaEntityControllerApi(this.apiClient);
 
-        Mono<EntityModelPizza> pizzaMono = api.getItemResourcePizzaGet("pizza-1");
+        final Mono<EntityModelPizza> pizzaMono = api.getItemResourcePizzaGet("pizza-1");
 
         StepVerifier
                 .create(pizzaMono)
