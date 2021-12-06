@@ -41,8 +41,8 @@
 	</modules>
 
 	<properties>
-		<java.version>1.8</java.version>
-		<openapi.version>1.5.12</openapi.version>
+		<java.version>17</java.version>
+		<openapi.version>1.5.13</openapi.version>
 	</properties>
 
 	<dependencies>
