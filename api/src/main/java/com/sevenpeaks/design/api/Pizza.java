@@ -42,7 +42,7 @@ public class Pizza {
             "price"
     })
     public Pizza(
-            @JsonProperty(value = "id", required = true) @NotBlank String id,
+            @JsonProperty(value = "id", required = false) String id,
             @JsonProperty(value = "name", required = true) @NotBlank String name,
             @JsonProperty(value = "price", required = true) @NotNull @Min(0) int price
             ) {
